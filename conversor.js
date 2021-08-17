@@ -17,15 +17,18 @@ const XRP = new Crypto("Ripple", 0.70, "Chris Larsen", 2016);
 
 const Cryptos = [BTC, USD, ADA, XRP];
 
-const PrecioCryptos = [USD.precio, ADA.precio, XRP.precio,BTC.precio];
+const PrecioCryptos = [USD.precio, ADA.precio, XRP.precio, BTC.precio];
 
 function comparar(a, b) {
     return a - b;
 }
+
 PrecioCryptos.sort(comparar).precio;
 
 const CryptosPrecio = Cryptos.concat(PrecioCryptos)
 
+
+/* 
 function elegirMoneda1() {
     let monedaElegida = prompt("Elija una moneda para hacer el cambio")
     monedaElegida = monedaElegida.toLowerCase();
@@ -36,14 +39,40 @@ function elegirMoneda1() {
     }
 
     return monedaElegida;
+} */
+
+
+
+function elegirMoneda1() {
+    let monedaElegida = document.getElementById("queDesea1");
+    monedaElegida.addEventListener("change", monedaElegida.value)
+
+    monedaElegida.onchange = () => {
+        console.log(monedaElegida)
+    }
+    return monedaElegida;
 }
 
+function cantidadMoneda1() {
+    let cantidad1 = document.getElementById("cantidad");
+    console.log(cantidad1.value);
+
+
+    cantidad1.onchange = () => {
+        console.log(cantidad1)
+    }
+    return cantidad1;
+}
+
+/*  
 function cantidadMoneda1(moneda1) {
 
     let cantidad1 = parseInt(prompt("elija la cantidad de " + moneda1 + " que desea convertir"));
     return cantidad1;
 }
+*/
 
+/*  
 function elegirMoneda2(moneda1) {
 
     let segundaMoneda = prompt("Elija la segunda moneda a la que quiere convertir sus " + moneda1);
@@ -55,6 +84,17 @@ function elegirMoneda2(moneda1) {
         segundaMoneda = segundaMoneda.toLowerCase();
     }
     return segundaMoneda;
+}
+*/
+
+function elegirMoneda1() {
+    let monedaElegida = document.getElementById("queDesea1");
+    monedaElegida.addEventListener("change", monedaElegida.value)
+
+    monedaElegida.change = () => {
+        console.log(monedaElegida)
+    }
+    return monedaElegida;
 }
 
 function tipoDeMoneda1(moneda1, cantidad, BTC, ADA, XRP, USD) {
@@ -120,14 +160,12 @@ function conversor(precioMonedaUsuario, precioMonedaUsuario2) {
 }
 
 moneda1 = elegirMoneda1();
-cantidad = cantidadMoneda1(moneda1);
-moneda2 = elegirMoneda2(moneda1);
+cantidad = cantidadMoneda1();
+moneda2 = elegirMoneda2();
 precioMonedaUsuario = tipoDeMoneda1(moneda1, cantidad, BTC, ADA, XRP, USD);
 precioMonedaUsuario2 = tipoDeMoneda2(moneda2, BTC, ADA, XRP, USD);
 conversion = conversor(precioMonedaUsuario, precioMonedaUsuario2);
-console.log(moneda1);
-console.log(cantidad)
-console.log(moneda2);
+
 console.log(precioMonedaUsuario);
 console.log(precioMonedaUsuario2);
 console.log(conversion);
